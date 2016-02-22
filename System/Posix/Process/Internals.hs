@@ -11,7 +11,12 @@ import Foreign
 import Foreign.C
 import System.Exit
 import System.IO.Error
+
+#ifdef ghcjs_HOST_OS
+type Signal = CInt
+#else
 import GHC.Conc (Signal)
+#endif
 
 -- | The exit status of a process
 data ProcessStatus
